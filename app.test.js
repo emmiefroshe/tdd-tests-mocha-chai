@@ -3,72 +3,76 @@
  const { add } = require('./app');
  const { multiply } = require('./app');
  const { subtract } = require('./app');
+ const { findMax } = require('./app');
+ const { reverseString } = require('./app');
 
+// ADDITION TESTING
 describe('Application can perform addition', () => {it('should add numbers', () => {
-    //assert.equal(2 + 5, 8, "Addition wrong");
     chai.expect(5 + 5).to.be.equal(10);
 });
 });
 
+
+//MULTIPLICATION TESTING
 describe('Application can perform multiplication', () => {it('should multiply numbers', () => {
-    //assert.equal(2 + 5, 8, "multiplication wrong");
     chai.expect(5 * 5).to.be.equal(25);
 });
 });
 
-describe('Application can perform subtraction', () => {it('should subtract numbers', () => {
-    //assert.equal(2 + 5, 8, "subtraction wrong");
-    chai.expect(10 - 5).to.be.equal(5);
-});
-});
-
-
-
-
-
-
-// GPT CODE
-
-
-const chai = require('chai');
-const { add, multiply, subtract } = require('./app');
-
-describe('Application can perform addition', () => {
-  it('should add numbers correctly', () => {
-    chai.expect(add(5, 5)).to.be.equal(10);
-  });
-});
-
-describe('Application can perform multiplication', () => {
-  it('should multiply numbers correctly', () => {
-    chai.expect(multiply(5, 5)).to.be.equal(25);
-  });
-});
-
+//SUBTRACTION TESTING
 describe('Application can perform subtraction', () => {
-  it('should subtract two positive numbers correctly', () => {
+  it('should be able to subtract negative numbers from positive numbers', () => {
+    chai.expect(subtract(10, -5)).to.be.equal(15);
+  });
+  
+  it('should be able to subtract two positive numbers', () => {
     chai.expect(subtract(10, 5)).to.be.equal(5);
+  });
+
+  it('should be able to subtract 2 negative numbers', () => {
+    chai.expect(subtract(-10, -5)).to.be.equal(-5);
   });
 
   it('should subtract a positive number from zero correctly', () => {
     chai.expect(subtract(0, 5)).to.be.equal(-5);
   });
 
-  it('should subtract a negative number from a positive number correctly', () => {
-    chai.expect(subtract(10, -5)).to.be.equal(15);
-  });
-
-  it('should subtract zero from a positive number correctly', () => {
+  it('should be able to subtract zero from a positive number too', () => {
     chai.expect(subtract(10, 0)).to.be.equal(10);
   });
 
-  it('should subtract zero from zero correctly', () => {
-    chai.expect(subtract(0, 0)).to.be.equal(0);
+});
+
+
+//FINDMAX FUNCTION TESTING
+
+describe('findMax function', () => {
+  it('should find the maximum value in any array', () => {
+    chai.expect(findMax([1, 5, 3, 9, 2])).to.equal(9);
   });
 
-  it('should subtract negative numbers correctly', () => {
-    chai.expect(subtract(-10, -5)).to.be.equal(-5);
+  it('should return undefined for any empty array', () => {
+    chai.expect(findMax([])).to.be.undefined;
+  });
+
+  it('should find the maximum value in an array even with negative numbers', () => {
+    chai.expect(findMax([-5, -2, -10, -1])).to.equal(-1);
   });
 });
 
+//REVERSE A STRING TESTING
+
+describe('reverseString function', () => {
+  it('should reverse a string correctly', () => {
+    chai.expect(reverseString('hello')).to.equal('olleh');
+  });
+
+  it('should return an empty string for an empty input', () => {
+    chai.expect(reverseString('')).to.equal('');
+  });
+
+  it('should preserve the order of characters in a palindrome string', () => {
+    chai.expect(reverseString('level')).to.equal('level');
+  });
+});
 

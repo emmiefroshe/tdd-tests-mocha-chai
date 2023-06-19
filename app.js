@@ -23,3 +23,18 @@ const subtract = (x, y) => {
 
 console.log(subtract(10, 2));
 module.exports ={ subtract };
+
+function findMax(arr) {
+    return Math.max(...arr);
+  }
+  
+  module.exports = { findMax };
+
+
+function reverseString(str) {
+    return str.split('').reverse().join('');
+  }
+  
+  module.exports = { reverseString };
+  
+  
